@@ -12,10 +12,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
 
+        implements NavigationView.OnNavigationItemSelectedListener {
+    public EditText emailText;
+    public TextView responseView;
+    public ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +47,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        responseView = (TextView) findViewById(R.id.responseView);
+        emailText = (EditText) findViewById(R.id.emailText);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        Button queryButton = (Button) findViewById(R.id.queryButton);
+        queryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MyAsyncTask(MainActivity.this).execute();
+            }
+        });
     }
 
     @Override

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="fc312bcb579c0fcd6572b3710f57005dfbeaa3be">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_481494f3ce4d660a33f620a61f14c354e4d8d4af\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_00382db492aa1c5eb10967766e59b604857e9553\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_8842ec730afaf889ae274080472ae5490deeb8fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_27e5d23cf95213d2aac435d93cbc1c38fb5d1ee3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_da6dcdd1a9da280f9684e2457a5622879974a53d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_7d48369737f96f4647c8660994b704d8146235cf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_c718f1581008cc4eb80c35a5d7ae48c1717fea79\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_30acedf6b068137c1442ea20c5365fbf69fbc204\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="99ad45cf8b5a9094604b211975ed734559e6c390">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_74ed1332d33ed15f0efa34978a94170e93cec3e6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_7af146b73ba33b33c43d1f3883504b47eb37def1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_e8be11895bfbdcdc9a97ec68ce2f2a64d38fef7d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_5a9dae019d8e0b62cfce18c54d239753591e382e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.2.4_313aff129984a0a45e086871ec03bfcc02e7284e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_51ab2d841f5c42494079767dda07419cdb13a81b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_3810b8c7c17e5568a407ecb2a6ad26548b82c510\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_3d93e8da8776d8dc3c7e3d0b9724794074966235\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_0bc9c2a2631f748cc5ef9759db75db703f4a3531\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_dffdbabfc62e3de592031b72f14ca9e88c29857c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_c569e684e0fa55941ae8a98b54f1d43d6ea219bc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="C:\Users\Helena\Desktop\BitcoinPriceIndex\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_25c46c70dd500bcbd30db2767ef2e901aa93ebb4\classes.dex" />
+    </item>
+
+</items>
