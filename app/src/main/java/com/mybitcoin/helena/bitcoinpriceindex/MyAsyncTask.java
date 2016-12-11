@@ -3,11 +3,16 @@ package com.mybitcoin.helena.bitcoinpriceindex;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,9 +21,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+
+import static android.content.ContentValues.TAG;
+import static java.lang.System.in;
 
 /**
  * Created by Helena on 12/10/2016.
@@ -29,14 +42,13 @@ class MyAsyncTask extends AsyncTask<Void, Void, String> {
     private Exception exception;
     public MainActivity activity;
 
-    public MyAsyncTask(MainActivity a)
-    {
+    public MyAsyncTask(MainActivity a) {
         this.activity = a;
     }
 
     protected void onPreExecute() {
         activity.progressBar.setVisibility(View.VISIBLE);
-        activity.responseView.setText("");
+
     }
 
     protected String doInBackground(Void... urls) {
@@ -65,12 +77,10 @@ class MyAsyncTask extends AsyncTask<Void, Void, String> {
                 }
                 bufferedReader.close();
                 return response.toString();
-            }
-            finally{
+            } finally {
                 connection.disconnect();
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             Log.e("ERROR", e.getMessage(), e);
             return null;
         }
@@ -112,14 +122,71 @@ class MyAsyncTask extends AsyncTask<Void, Void, String> {
     }
 
     protected void onPostExecute(String response) {
-        if(response == null) {
+        if (response == null) {
             response = "THERE WAS AN ERROR";
         }
         activity.progressBar.setVisibility(View.GONE);
+
         Log.i("INFO", response);
+        if (response != null) {
+            try {
+
+
+                JSONObject jsonObj = new JSONObject(response);
+
+                if (jsonObj != null) {
+                    JSONObject changes = jsonObj.getJSONObject("changes");
+
+                    //Price, percentage minus, plus
+                    JSONObject priceObj = changes.getJSONObject("price");
+                    String price = priceObj.getString("day");
+                    JSONObject percentObj = changes.getJSONObject("percent");
+                    String percent = percentObj.getString("day");
+                    activity.TV_minus_plus_change.setText(price + "€ " + (percent) + "%");
+
+                    //Today's open
+                    JSONObject openObj = jsonObj.getJSONObject("open");
+                    String open = openObj.getString("day");
+                    activity.TV_today_open.setText("Today's open: " + open);
+
+
+
+                //Last update
+                    String dtStart = jsonObj.getString("display_timestamp");
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyy - HH:mm");
+                    outputFormat.setTimeZone(TimeZone.getDefault());
+                    try {
+                        Date date = format.parse(dtStart);
+                        String str = outputFormat.format(date);
+                        activity.TV_last_update.setText("Last updated: " + str);
+
+                    } catch (ParseException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+
+                activity.TV_today_high.setText("Today's high: " + jsonObj.getString("high").toString());
+                activity.TV_today_low.setText("Today's low: " + jsonObj.getString("low").toString());
+                activity.TV_bitcoin_index.setText("€ " + jsonObj.getString("last").toString());
+            }
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(activity.getApplicationContext(),
+                                "Json parsing error: " + e.getMessage(),
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+                });
+
+
+
 
         try {
-            // if you don't want to use Gson, you can just print the plain response
+           // if you don't want to use Gson, you can just print the plain response
             System.out.println(response.toString());
             // print result in nice format using the Gson library
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -127,10 +194,16 @@ class MyAsyncTask extends AsyncTask<Void, Void, String> {
             JsonElement je = jp.parse(response.toString());
             String prettyJsonResponse = gson.toJson(je);
             System.out.println(prettyJsonResponse);
-            activity.responseView.setText(prettyJsonResponse);
+
+
+
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        catch (Exception o) {
+            o.printStackTrace();
+        }
+
+
+            }
         }
     }
 }

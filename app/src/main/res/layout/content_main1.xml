@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="72dp"
+    android:gravity="top"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+
+    tools:context="com.mybitcoin.helena.bitcoinpriceindex.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center|center_vertical"
+                android:layout_marginTop="16dp"
+                android:indeterminate="true"
+                android:visibility="gone" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:rowCount="4"
+                android:orientation="horizontal"
+                android:columnOrderPreserved="false">
+            <TextView
+                android:id="@+id/last_updated_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="3"
+
+                android:text="Last updated on:"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                 />
+
+                <TextView
+                    android:id="@+id/eur_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:text="756.32€"
+                    android:fontFamily="sans-serif-regular"
+                    android:textSize="@dimen/font_22sp"
+                    android:layout_columnSpan="2"
+                    android:layout_rowSpan="2"
+                    android:layout_gravity="fill" />
+                <TextView
+                    android:id="@+id/high_value"
+
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:text="high"
+                    android:fontFamily="sans-serif-regular"
+                    android:textSize="@dimen/font_12sp" />
+                <TextView
+                    android:id="@+id/low_value"
+
+android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+                    android:text="low"
+                    android:fontFamily="sans-serif-regular"
+                    android:textSize="@dimen/font_12sp"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/plus_minus_value"
+                   android:layout_columnSpan="2"
+android:layout_gravity="fill"
+
+                    android:text="+/-997978"
+                    android:fontFamily="sans-serif-regular"
+                    android:textSize="@dimen/font_12sp" />
+                <TextView
+                    android:id="@+id/open_value"
+
+                    android:layout_columnSpan="1"
+                    android:layout_rowSpan="1"
+
+                    android:text="avg"
+                    android:fontFamily="sans-serif-regular"
+                    android:textSize="@dimen/font_12sp" />
+            </GridLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/responseView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
+
+
