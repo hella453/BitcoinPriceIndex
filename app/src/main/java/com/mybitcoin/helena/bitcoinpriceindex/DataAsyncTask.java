@@ -1,5 +1,6 @@
 package com.mybitcoin.helena.bitcoinpriceindex;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -37,12 +38,13 @@ import static java.lang.System.in;
  * Created by Helena on 12/10/2016.
  */
 
-class MyAsyncTask extends AsyncTask<Void, Void, String> {
+class DataAsyncTask extends AsyncTask<Void, Void, String> {
 
     private Exception exception;
     public MainActivity activity;
-
-    public MyAsyncTask(MainActivity a) {
+    public String variable1;
+    public String variable2;
+    public DataAsyncTask(MainActivity a) {
         this.activity = a;
     }
 
@@ -61,6 +63,7 @@ class MyAsyncTask extends AsyncTask<Void, Void, String> {
             String signature = getSignature(secretKey, publicKey);
             String url = "https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCEUR";
             URL urlObj = new URL(url);
+
             HttpURLConnection connection = (HttpURLConnection) urlObj.openConnection();
             try {
 
@@ -142,6 +145,11 @@ class MyAsyncTask extends AsyncTask<Void, Void, String> {
                     String price = priceObj.getString("day");
                     JSONObject percentObj = changes.getJSONObject("percent");
                     String percent = percentObj.getString("day");
+                    if (percent.contains("-")){
+                        activity.TV_minus_plus_change.setTextColor(Color.RED);
+                    }else{
+                        activity.TV_minus_plus_change.setTextColor(Color.GREEN);
+                    }
                     activity.TV_minus_plus_change.setText(price + "€ " + (percent) + "%");
 
                     //Today's open
@@ -155,7 +163,7 @@ class MyAsyncTask extends AsyncTask<Void, Void, String> {
                     String dtStart = jsonObj.getString("display_timestamp");
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyy - HH:mm");
-                    outputFormat.setTimeZone(TimeZone.getDefault());
+                    format.setTimeZone(TimeZone.getTimeZone("UTC+1"));
                     try {
                         Date date = format.parse(dtStart);
                         String str = outputFormat.format(date);

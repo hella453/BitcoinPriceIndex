@@ -169,5 +169,8 @@
     <orderEntry type="library" exported="" name="compilerCommon-2.2.3" level="project" />
     <orderEntry type="library" exported="" name="kotlin-runtime-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="annotations-24.5.0" level="project" />
+    <orderEntry type="module" module-name="MPChartLib" exported="" />
+    <orderEntry type="library" exported="" scope="TEST" name="objenesis-1.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="mockito-core-1.9.5" level="project" />
   </component>
 </module>
