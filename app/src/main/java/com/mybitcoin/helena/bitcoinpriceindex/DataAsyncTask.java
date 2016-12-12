@@ -1,7 +1,9 @@
 package com.mybitcoin.helena.bitcoinpriceindex;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -44,12 +46,15 @@ class DataAsyncTask extends AsyncTask<Void, Void, String> {
     public MainActivity activity;
     public String variable1;
     public String variable2;
+
     public DataAsyncTask(MainActivity a) {
         this.activity = a;
     }
 
     protected void onPreExecute() {
         activity.progressBar.setVisibility(View.VISIBLE);
+
+        activity.verticalView.setVisibility(View.GONE);
 
     }
 
@@ -90,6 +95,32 @@ class DataAsyncTask extends AsyncTask<Void, Void, String> {
 
     }
 
+
+
+    protected void onPostExecute(String response) {
+        if (response == null) {
+            response = "THERE WAS AN ERROR";
+        }
+        activity.progressBar.setVisibility(View.GONE);
+        activity.verticalView.setVisibility(View.VISIBLE);
+
+        Log.i("INFO", response);
+        setValues(response);
+/*
+        try {
+           // if you don't want to use Gson, you can just print the plain response
+            System.out.println(response.toString());
+            // print result in nice format using the Gson library
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            JsonParser jp = new JsonParser();
+            JsonElement je = jp.parse(response.toString());
+            String prettyJsonResponse = gson.toJson(je);
+            System.out.println(prettyJsonResponse);
+        }
+        catch (Exception o) {
+            o.printStackTrace();
+        }*/
+    }
     private String getSignature(String secretKey, String publicKey) throws NoSuchAlgorithmException, InvalidKeyException
 
     {
@@ -123,14 +154,7 @@ class DataAsyncTask extends AsyncTask<Void, Void, String> {
 
 
     }
-
-    protected void onPostExecute(String response) {
-        if (response == null) {
-            response = "THERE WAS AN ERROR";
-        }
-        activity.progressBar.setVisibility(View.GONE);
-
-        Log.i("INFO", response);
+    private void setValues(String response) {
         if (response != null) {
             try {
 
@@ -145,21 +169,22 @@ class DataAsyncTask extends AsyncTask<Void, Void, String> {
                     String price = priceObj.getString("day");
                     JSONObject percentObj = changes.getJSONObject("percent");
                     String percent = percentObj.getString("day");
-                    if (percent.contains("-")){
-                        activity.TV_minus_plus_change.setTextColor(Color.RED);
-                    }else{
-                        activity.TV_minus_plus_change.setTextColor(Color.GREEN);
+                    if (percent.contains("-")) {
+                        activity.TV_minus_plus_change.setTextColor(ContextCompat.getColor(activity,R.color.colorBitcoinFall));
+                        activity.icon.setImageResource(R.drawable.arrow_down);
+                    } else {
+                        activity.TV_minus_plus_change.setTextColor(ContextCompat.getColor(activity,R.color.colorBitcoinUp));
+                        activity.icon.setImageResource(R.drawable.arrow_up);
                     }
-                    activity.TV_minus_plus_change.setText(price + "€ " + (percent) + "%");
+                    activity.TV_minus_plus_change.setText(price + "€ (" + percent + "%)");
 
                     //Today's open
                     JSONObject openObj = jsonObj.getJSONObject("open");
                     String open = openObj.getString("day");
-                    activity.TV_today_open.setText("Today's open: " + open);
+                    activity.TV_today_open.setText("Today's open: " + open + " €");
 
 
-
-                //Last update
+                    //Last update
                     String dtStart = jsonObj.getString("display_timestamp");
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyy - HH:mm");
@@ -174,10 +199,10 @@ class DataAsyncTask extends AsyncTask<Void, Void, String> {
                         e.printStackTrace();
                     }
 
-                activity.TV_today_high.setText("Today's high: " + jsonObj.getString("high").toString());
-                activity.TV_today_low.setText("Today's low: " + jsonObj.getString("low").toString());
-                activity.TV_bitcoin_index.setText("€ " + jsonObj.getString("last").toString());
-            }
+                    activity.TV_today_high.setText("Today's high: " + jsonObj.getString("high").toString() + " €");
+                    activity.TV_today_low.setText("Today's low: " + jsonObj.getString("low").toString() + " €");
+                    activity.TV_bitcoin_index.setText("€ " + jsonObj.getString("last").toString());
+                }
             } catch (final JSONException e) {
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
                 activity.runOnUiThread(new Runnable() {
@@ -189,30 +214,9 @@ class DataAsyncTask extends AsyncTask<Void, Void, String> {
                                 .show();
                     }
                 });
-
-
-
-
-        try {
-           // if you don't want to use Gson, you can just print the plain response
-            System.out.println(response.toString());
-            // print result in nice format using the Gson library
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            JsonParser jp = new JsonParser();
-            JsonElement je = jp.parse(response.toString());
-            String prettyJsonResponse = gson.toJson(je);
-            System.out.println(prettyJsonResponse);
-
-
-
-        }
-        catch (Exception o) {
-            o.printStackTrace();
-        }
-
-
             }
         }
     }
 }
+
 

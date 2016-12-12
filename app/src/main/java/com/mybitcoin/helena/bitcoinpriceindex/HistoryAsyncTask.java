@@ -45,18 +45,14 @@ public class HistoryAsyncTask extends AsyncTask<Void, Void, String> {
 
         private Exception exception;
         public MainActivity activity;
-        public String variable1;
-        public String variable2;
 
         public HistoryAsyncTask(MainActivity a) {
                 this.activity = a;
         }
 
         protected void onPreExecute() {
-                activity.progressBar.setVisibility(View.VISIBLE);
-
+                activity.progressBar1.setVisibility(View.VISIBLE);
         }
-
         protected String doInBackground(Void... urls) {
 
                 // Do some validation here
@@ -70,7 +66,6 @@ public class HistoryAsyncTask extends AsyncTask<Void, Void, String> {
 
                         HttpURLConnection connection = (HttpURLConnection) urlObj.openConnection();
                         try {
-
                                 connection.setRequestMethod("GET");
                                 connection.setRequestProperty("X-Signature", signature);
 
@@ -91,54 +86,22 @@ public class HistoryAsyncTask extends AsyncTask<Void, Void, String> {
                         Log.e("ERROR", e.getMessage(), e);
                         return null;
                 }
-
         }
 
-        private String getSignature(String secretKey, String publicKey) throws NoSuchAlgorithmException, InvalidKeyException
 
-        {
-
-                long timestamp = System.currentTimeMillis() / 1000L;
-                String payload = timestamp + "." + publicKey;
-
-                try {
-                        SecretKeySpec key = new SecretKeySpec((secretKey).getBytes("UTF-8"), "HmacSHA256");
-                        Mac mac = Mac.getInstance("HmacSHA256");
-                        mac.init(key);
-                        byte[] bytes = mac.doFinal(payload.getBytes("ASCII"));
-                        StringBuffer hash = new StringBuffer();
-                        for (int i = 0; i < bytes.length; i++) {
-                                String hex = Integer.toHexString(0xFF & bytes[i]);
-                                if (hex.length() == 1) {
-                                        hash.append('0');
-                                }
-                                hash.append(hex);
-                        }
-                        String signature = payload + "." + hash;
-
-                        return signature;
-                } catch (UnsupportedEncodingException e) {
-                        return "1";
-                } catch (InvalidKeyException e) {
-                        return "2";
-                } catch (NoSuchAlgorithmException e) {
-                        return "3";
-                }
-
-
-        }
 
         protected void onPostExecute(String response) {
                 if (response == null) {
                         response = "THERE WAS AN ERROR";
                 }
-                activity.progressBar.setVisibility(View.GONE);
-
+                activity.progressBar1.setVisibility(View.GONE);
                 //Log.i("INFO", response);
+                setValues(response);
+        }
+
+        private void setValues(String response) {
                 if (response != null) {
-
                         try {
-
                                 JSONArray jArray = new JSONArray(response);
                                 for (int i = 0; i < 7; i++) {
                                         JSONObject json_data = jArray.getJSONObject(i);
@@ -148,54 +111,63 @@ public class HistoryAsyncTask extends AsyncTask<Void, Void, String> {
                                         String dtStart = json_data.getString("time");
                                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                                         SimpleDateFormat outputFormat = new SimpleDateFormat("yyy");
-                                       format.setTimeZone(TimeZone.getTimeZone("UTC+1"));
+                                        format.setTimeZone(TimeZone.getTimeZone("UTC+1"));
                                         try {
                                                 Date date = format.parse(dtStart);
-
-
                                                 data.setTime(date.getTime());
-
-
                                         } catch (ParseException e) {
                                                 // TODO Auto-generated catch block
                                                 e.printStackTrace();
                                         }
-
-
                                         activity.list.add(data);// Finally adding the model to List
-
                                 }
-
-                                for(int i=0;i<activity.list.size();i++){
+                            activity.createChart();
+                                /*for(int i=0;i<activity.list.size();i++){
                                         HistoryModel history=activity.list.get(i);
                                         float average = history.getAverage();
                                         long time = history.getTime();
-
                                         System.out.println("Average: "+average+"Time "+time);
                                 }
+                                */
 
                         } catch (JSONException e) {
                                 e.printStackTrace();
                         }
-                               try {
-                                        // if you don't want to use Gson, you can just print the plain response
-                                        //System.out.println(response.toString());
-                                        // print result in nice format using the Gson library
-                                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                                        JsonParser jp = new JsonParser();
-                                        JsonElement je = jp.parse(response.toString());
-                                        String prettyJsonResponse = gson.toJson(je);
-                                        System.out.println(prettyJsonResponse);
-
-
-                                } catch (Exception o) {
-                                        o.printStackTrace();
-                                }
-
-
-
-                }activity.createChart();
+                }
         }
+    private String getSignature(String secretKey, String publicKey) throws NoSuchAlgorithmException, InvalidKeyException
+
+    {
+
+        long timestamp = System.currentTimeMillis() / 1000L;
+        String payload = timestamp + "." + publicKey;
+
+        try {
+            SecretKeySpec key = new SecretKeySpec((secretKey).getBytes("UTF-8"), "HmacSHA256");
+            Mac mac = Mac.getInstance("HmacSHA256");
+            mac.init(key);
+            byte[] bytes = mac.doFinal(payload.getBytes("ASCII"));
+            StringBuffer hash = new StringBuffer();
+            for (int i = 0; i < bytes.length; i++) {
+                String hex = Integer.toHexString(0xFF & bytes[i]);
+                if (hex.length() == 1) {
+                    hash.append('0');
+                }
+                hash.append(hex);
+            }
+            String signature = payload + "." + hash;
+
+            return signature;
+        } catch (UnsupportedEncodingException e) {
+            return "1";
+        } catch (InvalidKeyException e) {
+            return "2";
+        } catch (NoSuchAlgorithmException e) {
+            return "3";
+        }
+
+
+    }
 }
 
 

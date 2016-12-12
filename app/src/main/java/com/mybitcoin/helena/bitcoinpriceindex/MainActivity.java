@@ -16,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -52,8 +54,10 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private SeekBar mSeekBarX, mSeekBarY;
     private TextView tvX, tvY;
     TextView TV_today_low, TV_today_high, TV_today_open, TV_minus_plus_change, TV_bitcoin_index, TV_last_update;
+    ImageView icon;
+    View verticalView;
 
-    ProgressBar progressBar;
+    ProgressBar progressBar, progressBar1;
 
 
     List<HistoryModel> list = new ArrayList<HistoryModel>();
@@ -75,11 +79,13 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
             }
         });
         */
+        /*
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
-        toggle.syncState();
+        toggle.syncState()
+        */;
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -91,7 +97,10 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         TV_minus_plus_change = (TextView) findViewById(R.id.plus_minus_value);
         TV_today_open = (TextView) findViewById(R.id.open_value);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar1 = (ProgressBar) findViewById(R.id.progressBar1);
         TV_last_update = (TextView) findViewById(R.id.last_updated_TV);
+        icon = (ImageView) findViewById(R.id.arrow);
+        verticalView = (View) findViewById(R.id.verticalView);
 
 
 
@@ -140,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.enableGridDashedLine(10f, 10f, 0f);
-        xAxis.setGranularity(1f);
+
         //xAxis.setValueFormatter(new MyCustomXAxisValueFormatter());
         //xAxis.addLimitLine(llXAxis); // add x-axis limit line
         xAxis.setValueFormatter(new IAxisValueFormatter() {
@@ -280,7 +289,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
         ArrayList<Entry> values = new ArrayList<Entry>();
 
-        for(int i=list.size()-1;i>=0;i--){
+        for(int i=6;i>=0;i--){
             HistoryModel history = list.get(i);
             float average = history.getAverage();
             long time = TimeUnit.MILLISECONDS.toDays(history.getTime());
